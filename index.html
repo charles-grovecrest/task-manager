@@ -125,6 +125,12 @@
       border-left: 4px solid var(--color-primary);
     }
 
+    .creation-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
      .new-note-section {
  background-color: var(--color-surface);
  border-radius: 12px;
@@ -567,7 +573,9 @@
       </div>
     </div>
 
-    <div class="new-task-section">
+    
+<div class="creation-wrapper">
+            <div class="new-task-section">
       <h3>➕ Create New Task</h3>
       <div class="new-task-form">
         <div class="form-row">
@@ -610,6 +618,7 @@
  <div id="notesList"></div>
  </div>
   </div>
+            </div>
 
   <script>
     const taskData = {
