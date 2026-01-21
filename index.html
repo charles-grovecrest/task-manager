@@ -633,8 +633,7 @@
       <button class="btn-secondary" onclick="resetAll()">Reset All Tasks</button>
       <button class="btn-secondary" onclick="exportData()">Export Progress</button>
     </div>
-     iv>
-            </div>
+    </div>
 
   <script>
     const taskData = {
@@ -863,7 +862,7 @@
       for (const category of sortedCategories) {
         const tasks = taskData[category];
         const sortedTasks = Object.keys(tasks).sort();
-        let activeCategoryHtml = '';
+        let activeCategoryHtml = '<h2>➡️ Active Tasks</h2>';
         let completedCategoryHtml = '';
 
         for (const task of sortedTasks) {
@@ -909,7 +908,6 @@
         if (activeCategoryHtml) {
           activeContainer.innerHTML += `
             <div class="category">
-            <h2>➡️ Active Tasks</h2>
               <div class="category-title">${category}</div>
               ${activeCategoryHtml}
             </div>
@@ -919,6 +917,7 @@
         if (completedCategoryHtml) {
           completedContainer.innerHTML += `
             <div class="category completed-section">
+			<h2>✔️ Completed Tasks</h2>
             <div class="category-title">${category}</div>
               ${completedCategoryHtml}
             </div>
