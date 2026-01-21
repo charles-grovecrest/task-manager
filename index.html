@@ -907,7 +907,7 @@
 
         if (activeCategoryHtml) {
           activeContainer.innerHTML += `
-            <div class="category">
+            <div class="category"> <h2>➡️ Active Tasks</h2>
             <h2>➡️ Active Tasks</h2>
               <div class="category-title">${category}</div>
               ${activeCategoryHtml}
@@ -917,8 +917,8 @@
 
         if (completedCategoryHtml) {
           completedContainer.innerHTML += `
-            <div class="category completed-section">
-              <div class="category-title">${category}</div>
+            <div class="category completed-section"> <h2>➡️ Active Tasks</h2>
+           <h2>➡️ Active Tasks</h2>    <div class="category-title">${category}</div>
               ${completedCategoryHtml}
             </div>
           `;
