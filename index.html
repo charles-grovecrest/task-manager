@@ -125,6 +125,32 @@
       border-left: 4px solid var(--color-primary);
     }
 
+     .new-note-section {
+ background-color: var(--color-surface);
+ border-radius: 12px;
+ padding: 20px;
+ margin-bottom: 30px;
+ border-left: 4px solid var(--color-primary);
+ }
+ .new-note-section h3 {
+ color: var(--color-primary);
+ margin-bottom: 15px;
+ font-size: 1.2rem;
+ }
+ .note-item {
+ background-color: rgba(71, 85, 105, 0.3);
+ padding: 15px;
+ border-radius: 8px;
+ margin-bottom: 12px;
+ border-left: 3px solid var(--color-primary);
+ }
+ .note-timestamp {
+ font-size: 0.8rem;
+ color: var(--color-text-secondary);
+ margin-top: 10px;
+ font-style: italic;
+ }
+
     .new-task-section h3 {
       color: var(--color-primary);
       margin-bottom: 15px;
@@ -560,6 +586,11 @@
         <input type="text" id="newTaskSubtasks" class="form-input" placeholder="Subtasks (comma-separated, optional)">
       </div>
     </div>
+     <div class="new-note-section">
+ <h3>📝 Create New Note</h3>
+ <textarea id="noteInput" class="form-input" placeholder="Write your note here..." style="height: 100px; resize: vertical;"></textarea>
+ <button class="btn-primary" onclick="createNewNote()" style="margin-top: 10px;">Create Note</button>
+ </div>
 
     <div class="content-wrapper">
       <div id="activeTasks" class="section">
@@ -574,6 +605,10 @@
       <button class="btn-secondary" onclick="resetAll()">Reset All Tasks</button>
       <button class="btn-secondary" onclick="exportData()">Export Progress</button>
     </div>
+     <div id="notesSection" class="section" style="margin-top: 20px;">
+ <h2>📝 Notes</h2>
+ <div id="notesList"></div>
+ </div>
   </div>
 
   <script>
@@ -621,6 +656,7 @@
     };
 
     const state = {};
+     let notes = [];
 
     function initializeTasks() {
       for (const category in taskData) {
@@ -1015,8 +1051,50 @@
       }
     }
 
+     function createNewNote() {
+ const noteText = document.getElementById('noteInput').value.trim();
+ if (!noteText) {
+ alert('Please enter a note');
+ return;
+ }
+ const now = new Date();
+ const timestamp = now.toLocaleString();
+ const note = {
+ text: noteText,
+ timestamp: timestamp,
+ id: Date.now()
+ };
+ notes.unshift(note);
+ document.getElementById('noteInput').value = '';
+ localStorage.setItem('notes', JSON.stringify(notes));
+ renderNotes();
+ }
+ 
+ function renderNotes() {
+ const notesList = document.getElementById('notesList');
+ if (notes.length === 0) {
+ notesList.innerHTML = '<div class="empty-message">No notes yet. Create one to get started!</div>';
+ return;
+ }
+ notesList.innerHTML = notes.map(note => `
+ <div class="note-item">
+ <p>${note.text}</p>
+ <div class="note-timestamp">📅 ${note.timestamp}</div>
+ </div>
+ `).join('');
+ }
+ 
+ function loadNotes() {
+ const stored = localStorage.getItem('notes');
+ if (stored) {
+ notes = JSON.parse(stored);
+ }
+ renderNotes();
+ }
+
     initializeTasks();
     initMode();
+     loadNotes();
   </script>
   
   <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
