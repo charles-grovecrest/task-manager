@@ -394,9 +394,13 @@
     grid-row: 2;
 }
 
-#completedTasks {
+    #notesSection {
     grid-column: 2;
     grid-row: 2;
+}
+#completedTasks {
+    grid-column: 2;
+    grid-row: 3;
 }
 
     .button-group {
@@ -611,10 +615,15 @@
  </div>
 
       <div id="activeTasks" class="section">
-        <h2>Active Tasks</h2>
-      </div>
-      <div id="completedTasks" class="section completed-section">
-        <h2>✓ Completed Tasks</h2>
+            <h2>📋 Current Tasks</h2>      
+                    </div>
+<div id="notesSection" class="section" style="margin-top: 20px;">
+ <h2>📝 Notes</h2>
+ <div id="notesList"></div>
+ </div>
+        </div>
+        <div id="completedTasks" class="section completed-section">        
+                      <h2>✓ Completed Tasks</h2>
       </div>
           </div>
 
@@ -622,11 +631,7 @@
       <button class="btn-secondary" onclick="resetAll()">Reset All Tasks</button>
       <button class="btn-secondary" onclick="exportData()">Export Progress</button>
     </div>
-     <div id="notesSection" class="section" style="margin-top: 20px;">
- <h2>📝 Notes</h2>
- <div id="notesList"></div>
- </div>
-  </div>
+     iv>
             </div>
 
   <script>
