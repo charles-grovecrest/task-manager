@@ -744,6 +744,7 @@
 
       if (state[taskName].completed) {
         state[taskName].completedAt = new Date().toLocaleString();
+		              createConfetti();
         const category = getCategoryForTask(taskName);
         const subtasks = taskData[category][taskName];
         subtasks.forEach((_, index) => {
