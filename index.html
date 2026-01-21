@@ -881,6 +881,7 @@
 
           const timestampHtml = state[task].completedAt ? `<span class="task-timestamp">✓ Completed: ${state[task].completedAt}</span>` : '';
           const addSubtaskBtn = `<button class="action-btn" onclick="event.stopPropagation(); addSubtask('${task}')">+ Add Subtask</button>`;
+			 const deleteBtn = isCompleted ? `<button class="action-btn" onclick="event.stopPropagation(); deleteTask('${task}')">✕ Delete</button>` : '';
 
           const taskHtml = `
             <div class="task-item ${isCompleted ? 'completed' : ''}">
@@ -889,8 +890,7 @@
                 <span class="task-label editable-text" onclick="event.stopPropagation(); startEditTask('${task}')">${task}</span>
               </div>
               ${timestampHtml ? `<div class="task-info">${timestampHtml}</div>` : ''}
-              <div class="task-actions">${addSubtaskBtn}</div>
-              <div class="subtasks">
+ <div class="task-actions">${addSubtaskBtn}${deleteBtn}</div>              <div class="subtasks">
                 ${subtasksHtml}
               </div>
             </div>
@@ -1142,6 +1142,8 @@
         behavior: 'smooth'
       });
     }
+
+	   function deleteTask(taskName) { const category = getCategoryForTask(taskName); if (category && taskData[category][taskName]) { delete taskData[category][taskName]; delete state[taskName]; saveToStorage(); renderTasks(); updateStats(); } }
   </script>
 </body>
 </html>
