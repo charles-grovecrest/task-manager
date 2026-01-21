@@ -611,13 +611,13 @@
       </div>
     </div>
  <div class="section new-note-section">
- <h2>📝 Create New Note</h2>
+ <h2>📜 Create New Note</h2>
  <textarea id="noteInput" class="form-input" placeholder="Write your note here..." style="height: 100px; resize: vertical;"></textarea>
  <button class="btn-primary" onclick="createNewNote()" style="margin-top: 10px;">Create Note</button>
  </div>
-      <div id="activeTasks" class="section new-note-section">
-            <h2>📋 Active Tasks</h2>      
-      </div>
+<div id="activeTasks" class="section new-note-section">
+    <h2>📋 Active Tasks</h2>      
+</div>
 <div id="notesSection" class="section" style="margin-top: 20px;">
  <h2>📝 Notes</h2>
  <div id="notesList"></div>
@@ -908,6 +908,7 @@
         if (activeCategoryHtml) {
           activeContainer.innerHTML += `
             <div class="category">
+            <h2>➡️ Active Tasks</h2>
               <div class="category-title">${category}</div>
               ${activeCategoryHtml}
             </div>
