@@ -862,7 +862,7 @@
       for (const category of sortedCategories) {
         const tasks = taskData[category];
         const sortedTasks = Object.keys(tasks).sort();
-        let activeCategoryHtml = '<h2>➡️ Active Tasks</h2>';
+        let activeCategoryHtml = '';
         let completedCategoryHtml = '';
 
         for (const task of sortedTasks) {
