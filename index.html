@@ -616,7 +616,7 @@
  <button class="btn-primary" onclick="createNewNote()" style="margin-top: 10px;">Create Note</button>
  </div>
 <div id="activeTasks" class="section new-note-section">
-    <h2>📋 Active Tasks</h2>      
+    <h2>📋 Active Tasks1</h2>      
 </div>
 <div id="notesSection" class="section" style="margin-top: 20px;">
  <h2>📝 Notes</h2>
@@ -907,8 +907,8 @@
 
         if (activeCategoryHtml) {
           activeContainer.innerHTML += `
-            <div class="category"> <h2>➡️ Active Tasks</h2>
-            <h2>➡️ Active Tasks</h2>
+            <div class="category"> <h2>➡️ Active Tasks2</h2>
+            <h2>➡️ Active Tasks3</h2>
               <div class="category-title">${category}</div>
               ${activeCategoryHtml}
             </div>
@@ -917,8 +917,8 @@
 
         if (completedCategoryHtml) {
           completedContainer.innerHTML += `
-            <div class="category completed-section"> <h2>➡️ Active Tasks</h2>
-           <h2>➡️ Active Tasks</h2>    <div class="category-title">${category}</div>
+            <div class="category completed-section"> <h2>➡️ Active Tasks4</h2>
+           <h2>➡️ Active Tasks5</h2>    <div class="category-title">${category}</div>
               ${completedCategoryHtml}
             </div>
           `;
